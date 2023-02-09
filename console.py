@@ -2,7 +2,7 @@ import cmd
 from turtle import *
 
 
-class TurtleShell(cmd.Cmd):
+class HBNBShell(cmd.Cmd):
     intro = ''
     prompt = '(hbnb) '
     file = None
@@ -22,4 +22,4 @@ def parse(arg):
 
 
 if __name__ == '__main__':
-    TurtleShell().cmdloop()
+    HBNBShell().cmdloop()
