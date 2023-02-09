@@ -1,5 +1,4 @@
 import cmd
-from turtle import *
 
 
 class HBNBShell(cmd.Cmd):
