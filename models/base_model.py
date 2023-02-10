@@ -1,18 +1,20 @@
 #!/usr/bin/python3
 """BaseModel that defines all common attributes and
     methods for all the other classes"""
-
-
-from uuid import uuid4
 from datetime import datetime
 import models
+import uuid
 
 
 class BaseModel:
-    """BaseModel class"""
+    """
+    A class that contains the common attributes
+    and method with class like User, Place....
+    """
+
     def __init__(self):
-        """Initialize"""
-        self.id = str(uuid4())
+        """Class initialized with public attributes"""
+        self.id = str(uuid.uuid4())
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
 
