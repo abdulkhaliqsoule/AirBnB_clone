@@ -4,6 +4,12 @@ import cmd
 from models.base_model import BaseModel
 from models import storage
 from shlex import split
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -65,7 +71,7 @@ class HBNBCommand(cmd.Cmd):
         storage.save()
 
     def do_all(self, line):
-        """prints string representation ofall objects"""
+        """prints string representation of all objects"""
         if not len(line):
             print([obj for obj in storage.all().values()])
             return
