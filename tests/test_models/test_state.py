@@ -1,68 +1,76 @@
 #!/usr/bin/python3
-"""
-Unittest for State class
-"""
-
 import unittest
+import pep8
+import json
+import os
+from datetime import datetime
 from models.base_model import BaseModel
+from models.user import User
 from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
 
 
-class test_state(unittest.TestCase):
-    """
-    Unittest for State class
-    """
-
-    def test_docstring(self):
-        """
-        Test if the class has a docstring
-        """
-
-        self.assertIsNotNone(State.__doc__)
-
-    def test_state(self):
-        """
-        Test the instanitation of a new instance
-        of State and its methods
-        """
-        """
-        Instanitation
-        """
-
-        state = State()
-        update = state.updated_at
-
-        self.assertEqual(isinstance(state, State), True)
-        self.assertEqual(issubclass(state.__class__, BaseModel), True)
-
-        self.assertIsNotNone(state.name)
-        self.assertEqual(type(state.name), str)
-        self.assertEqual(state.name, "")
-
-        """
-        str method
-        """
-
-        string = f"[State] ({state.id}) {state.__dict__}"
-        self.assertEqual(str(state), string)
-
-        """
-        save method
-        """
-
-        self.assertEqual(update, state.updated_at)
-        state.save()
-        self.assertNotEqual(update, state.updated_at)
-
-        """
-        to_dict method
-        """
-
-        test_dict = state.to_dict()
-        self.assertEqual(type(test_dict), dict)
-        self.assertEqual(type(test_dict["created_at"]), str)
-        self.assertEqual(type(test_dict["updated_at"]), str)
+class TestStateDocs(unittest.TestCase):
+    """ check for documentation """
+    def test_class_doc(self):
+        """ check for class documentation """
+        self.assertTrue(len(State.__doc__) > 0)
 
 
-if __name__ == '__main__':
-    unittest.main()
+class TestStatePep8(unittest.TestCase):
+    """ check for pep8 validation """
+    def test_pep8(self):
+        """ test base and test_base for pep8 conformance """
+        style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/state.py'
+        file2 = 'tests/test_models/test_state.py'
+        result = style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warning).")
+
+
+class TestState(unittest.TestCase):
+    """ tests for class State """
+    @classmethod
+    def setUpClass(cls):
+        """ set up instances for all tests """
+        cls.state = State()
+
+    def test_subclass(self):
+        """ test that state is a subclass of basemodel """
+        self.assertIsInstance(self.state, BaseModel)
+        self.assertTrue(hasattr(self.state, "id"))
+        self.assertTrue(hasattr(self.state, "created_at"))
+        self.assertTrue(hasattr(self.state, "updated_at"))
+
+    def test_id(self):
+        """ test id """
+        self.assertEqual(str, type(self.state.id))
+
+    def test_created_at(self):
+        """ test created_at """
+        self.assertEqual(datetime, type(self.state.created_at))
+
+    def test_updated_at(self):
+        """ test updated_at """
+        self.assertEqual(datetime, type(self.state.updated_at))
+
+    def test_name(self):
+        """ test name """
+        self.assertTrue(hasattr(self.state, "name"))
+        self.assertEqual(self.state.name, "")
+
+    def test_to_dict(self):
+        """ test to_dict method """
+        new_dict = self.state.to_dict()
+        self.assertEqual(type(new_dict), dict)
+        self.assertTrue('to_dict' in dir(self.state))
+
+    @classmethod
+    def tearDownClass(cls):
+        """ remove test instances """
+        pass

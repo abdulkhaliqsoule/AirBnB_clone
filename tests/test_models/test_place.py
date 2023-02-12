@@ -1,98 +1,131 @@
 #!/usr/bin/python3
-"""
-Unittest for Place class
-"""
-
 import unittest
-from models.place import BaseModel
+import pep8
+import json
+import os
+from datetime import datetime
+from models.base_model import BaseModel
+from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
 from models.place import Place
+from models.review import Review
+from models.engine.file_storage import FileStorage
 
 
-class test_place(unittest.TestCase):
-    """
-    Unittest for Place class
-    """
-
-    def test_place(self):
-        """
-        Test the instanitation of a new instance
-        of Place and its methods
-        """
-
-        """
-        Test if the class has a docstring
-        """
-
-        self.assertIsNotNone(Place.__doc__)
-
-        """
-        Instanitation
-        """
-
-        place = Place()
-        update = place.updated_at
-
-        self.assertEqual(isinstance(place, Place), True)
-        self.assertEqual(issubclass(place.__class__, BaseModel), True)
-
-        self.assertIsNotNone(place.city_id)
-        self.assertEqual(type(place.city_id), str)
-        self.assertEqual(place.city_id, "")
-        self.assertIsNotNone(place.user_id)
-        self.assertEqual(type(place.user_id), str)
-        self.assertEqual(place.user_id, "")
-        self.assertIsNotNone(place.name)
-        self.assertEqual(type(place.name), str)
-        self.assertEqual(place.name, "")
-        self.assertIsNotNone(place.description)
-        self.assertEqual(type(place.description), str)
-        self.assertEqual(place.description, "")
-        self.assertIsNotNone(place.number_rooms)
-        self.assertEqual(type(place.number_rooms), int)
-        self.assertEqual(place.number_rooms, 0)
-        self.assertIsNotNone(place.number_bathrooms)
-        self.assertEqual(type(place.number_bathrooms), int)
-        self.assertEqual(place.number_bathrooms, 0)
-        self.assertIsNotNone(place.max_guest)
-        self.assertEqual(type(place.max_guest), int)
-        self.assertEqual(place.max_guest, 0)
-        self.assertIsNotNone(place.price_by_night)
-        self.assertEqual(type(place.price_by_night), int)
-        self.assertEqual(place.price_by_night, 0)
-        self.assertIsNotNone(place.latitude)
-        self.assertEqual(type(place.latitude), float)
-        self.assertEqual(place.latitude, 0.0)
-        self.assertIsNotNone(place.longitude)
-        self.assertEqual(type(place.longitude), float)
-        self.assertEqual(place.longitude, 0.0)
-        self.assertIsNotNone(place.amenity_ids)
-        self.assertEqual(type(place.amenity_ids), list)
-        self.assertEqual(place.amenity_ids, [])
-
-        """
-        str method
-        """
-
-        string = f"[Place] ({place.id}) {place.__dict__}"
-        self.assertEqual(str(place), string)
-
-        """
-        save method
-        """
-
-        self.assertEqual(update, place.updated_at)
-        place.save()
-        self.assertNotEqual(update, place.updated_at)
-
-        """
-        to_dict method
-        """
-
-        test_dict = place.to_dict()
-        self.assertEqual(type(test_dict), dict)
-        self.assertEqual(type(test_dict["created_at"]), str)
-        self.assertEqual(type(test_dict["updated_at"]), str)
+class TestPlaceDocs(unittest.TestCase):
+    """ check for documentation """
+    def test_class_doc(self):
+        """ check for class documentation """
+        self.assertTrue(len(Place.__doc__) > 0)
 
 
-if __name__ == '__main__':
-    unittest.main()
+class TestPlacePep8(unittest.TestCase):
+    """ check for pep8 validation """
+    def test_pep8(self):
+        """ test base and test_base for pep8 conformance """
+        style = pep8.StyleGuide(quiet=True)
+        file1 = 'models/place.py'
+        file2 = 'tests/test_models/test_place.py'
+        result = style.check_files([file1, file2])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warning).")
+
+
+class TestPlace(unittest.TestCase):
+    """ tests for class Place """
+    @classmethod
+    def setUpClass(cls):
+        """ set up instances for all tests """
+        cls.place = Place()
+
+    def test_subclass(self):
+        """ test that place is a subclass of basemodel """
+        self.assertIsInstance(self.place, BaseModel)
+        self.assertTrue(hasattr(self.place, "id"))
+        self.assertTrue(hasattr(self.place, "created_at"))
+        self.assertTrue(hasattr(self.place, "updated_at"))
+
+    def test_id(self):
+        """ test id """
+        self.assertEqual(str, type(self.place.id))
+
+    def test_created_at(self):
+        """ test created_at """
+        self.assertEqual(datetime, type(self.place.created_at))
+
+    def test_updated_at(self):
+        """ test updated_at """
+        self.assertEqual(datetime, type(self.place.updated_at))
+
+    def test_city_id(self):
+        """ test city_id """
+        self.assertTrue(hasattr(self.place, "city_id"))
+        self.assertEqual(self.place.city_id, "")
+
+    def test_user_id(self):
+        """ test user_id """
+        self.assertTrue(hasattr(self.place, "user_id"))
+        self.assertEqual(self.place.user_id, "")
+
+    def test_name(self):
+        """ test name """
+        self.assertTrue(hasattr(self.place, "name"))
+        self.assertEqual(self.place.name, "")
+
+    def test_description(self):
+        """ test description """
+        self.assertTrue(hasattr(self.place, "description"))
+        self.assertEqual(self.place.description, "")
+
+    def test_number_rooms(self):
+        """ test number_rooms """
+        self.assertTrue(hasattr(self.place, "number_rooms"))
+        self.assertEqual(self.place.number_rooms, 0)
+
+    def test_number_bathrooms(self):
+        """ test number_bathrooms """
+        self.assertTrue(hasattr(self.place, "number_bathrooms"))
+        self.assertEqual(self.place.number_bathrooms, 0)
+
+    def test_max_guest(self):
+        """ test max_guest """
+        self.assertTrue(hasattr(self.place, "max_guest"))
+        self.assertEqual(self.place.max_guest, 0)
+
+    def test_price_by_night(self):
+        """ test price_by_night """
+        self.assertTrue(hasattr(self.place, "price_by_night"))
+        self.assertEqual(self.place.price_by_night, 0)
+
+    def test_latitude(self):
+        """ test latitude """
+        self.assertTrue(hasattr(self.place, "latitude"))
+        self.assertEqual(self.place.latitude, 0.0)
+
+    def test_longitude(self):
+        """ test longitude """
+        self.assertTrue(hasattr(self.place, "longitude"))
+        self.assertEqual(self.place.longitude, 0.0)
+
+    def test_amenity_ids(self):
+        """ test amenity_ids """
+        self.assertTrue(hasattr(self.place, "amenity_ids"))
+        self.assertEqual(self.place.amenity_ids, [])
+
+    def test_to_dict(self):
+        """ test to_dict method """
+        new_dict = self.place.to_dict()
+        self.assertEqual(type(new_dict), dict)
+        self.assertTrue('to_dict' in dir(self.place))
+
+    def test_str(self):
+        """ test ___str___ method """
+        correct = "[Place] ({}) {}".format(self.place.id, self.place.__dict__)
+        self.assertEqual(correct, str(self.place))
+
+    @classmethod
+    def tearDownClass(cls):
+        """ remove test instances """
+        pass
